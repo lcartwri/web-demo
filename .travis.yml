@@ -36,9 +36,9 @@ after_success:
   - pwd
   - cd web-demo-code
   - pwd
-  - mkdir web-demo-deploy
-  - mv -f ${FILES} ./web-demo-deploy
-  - ls -la /web-demo-deploy
+  - mkdir /home/travis/build/${USER}/web-demo-deploy
+  - mv -f ${FILES} /home/travis/build/${USER}/web-demo-deploy
+  - ls -la home/travis/build/${USER}/web-demo-deploy
   #- git remote
   #- git config user.email ${EMAIL}
   #- git config user.name ${USER}
@@ -50,7 +50,7 @@ after_success:
   #- cd ${REPO}
   #- git remote
   #- git config user.email ${EMAIL}
-  #- git config user.name $
+  #- git config user.name ${USER}
   #- git add ${FILES}
   #- git commit -m ${MESSAGE}
   #- git push "https://${TRAVIS_SECURE_TOKEN_NAME}@${GH_REPO}" master > /dev/null 2>&1
