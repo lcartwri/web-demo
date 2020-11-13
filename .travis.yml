@@ -3,7 +3,7 @@ env:
   global:
   - USER="lcartwri"
   - EMAIL="lcartwri@cisco.com"
-  - REPO="web-demo-deploy"
+  - REPO="web-demo-code"
   - FILES="Dockerfile"
   - GH_REPO="github.com/${USER}/${REPO}.git"
 services:
@@ -21,18 +21,18 @@ after_success:
   # Take those images and push them to docker hub
   - docker push lcartwri/web-demo-app
   # Set your identification.
-  - git config --global user.email "lcartwri@cisco.com"
-  - git config --global user.name "lcartwri" 
+  # - git config --global user.email "lcartwri@cisco.com"
+  # - git config --global user.name "lcartwri" 
   # Clone some repository you want into "repo" subfolder.
-  - git clone https://lcartwri:${GH_TOKEN}@github.com/web-demo-code.git . 
+  # - git clone https://lcartwri:${GH_TOKEN}@github.com/web-demo-code.git . 
   # Now, perform your custom actions. Custom repository is cloned int "repo" subfolder of PWD.
 
   # After your actions are done, you might want to commit and push your changes.
   #- cd repo
   - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
-  - git clone git://${GH_REPO}
-  - mv -f ${FILES} ${REPO}
-  - cd ${REPO}
+  - git clone https://github.com/lcartwri/web-demo-code.git
+  - cd ${GH_REPO}
+  # - mv -f ${FILES} .
   - git remote
   - git config user.email ${EMAIL}
   - git config user.name ${USER}
@@ -43,8 +43,8 @@ after_success:
   #- mv -f ${FILES} ${REPO}
   #- cd ${REPO}
   #- git remote
-  #- git config user.email lcartwri@cisco.com
-  #- git config user.name lcartwri
+  #- git config user.email ${EMAIL}
+  #- git config user.name $
   #- git add ${FILES}
   #- git commit -m ${MESSAGE}
   #- git push "https://${TRAVIS_SECURE_TOKEN_NAME}@${GH_REPO}" master > /dev/null 2>&1
