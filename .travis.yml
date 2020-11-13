@@ -33,6 +33,7 @@ after_success:
   - git clone https://github.com/lcartwri/web-demo-code.git
   # - cd ${GH_REPO}
   # - mv -f ${FILES} .
+  - pwd
   - git remote
   - git config user.email ${EMAIL}
   - git config user.name ${USER}
