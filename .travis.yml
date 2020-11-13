@@ -34,11 +34,13 @@ after_success:
   # - cd ${GH_REPO}
   # - mv -f ${FILES} .
   - pwd
+  - cd web-demo-code
+  - pwd
   - git remote
   - git config user.email ${EMAIL}
   - git config user.name ${USER}
-  - git add ${FILES}
-  - git commit -m ${MESSAGE}
+  # - git add ${FILES}
+  - git commit -am ${MESSAGE}
   - git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
 
   #- mv -f ${FILES} ${REPO}
