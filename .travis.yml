@@ -36,6 +36,7 @@ after_success:
   - pwd
   - cd web-demo-code
   - pwd
+  - ls -la
   - mkdir /home/travis/build/${USER}/web-demo-deploy
   - mv -f ${FILES} /home/travis/build/${USER}/web-demo-deploy
   - ls -la home/travis/build/${USER}/web-demo-deploy
