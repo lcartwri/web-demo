@@ -17,7 +17,7 @@ after_success:
   - git config --global user.email "lcartwri@cisco.com"
   - git config --global user.name "lcartwri" 
   # Clone some repository you want into "repo" subfolder.
-  - git clone https://lcartwri:${GH_TOKEN}@github.com/web-demo-deploy.git ./repo 
+  - git clone https://lcartwri:${GH_TOKEN}@github.com/web-demo-code.git ./repo 
   # Now, perform your custom actions. Custom repository is cloned int "repo" subfolder of PWD.
 
   # After your actions are done, you might want to commit and push your changes.
