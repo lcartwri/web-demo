@@ -1,4 +1,11 @@
 language: generic
+env:
+  global:
+  - USER="lcartwri"
+  - EMAIL="lcartwri@cisco.com"
+  - REPO="web-demo-deploy"
+  - FILES="Dockerfile"
+  - GH_REPO="github.com/${USER}/${REPO}.git"
 services:
   - docker
 
@@ -22,5 +29,24 @@ after_success:
 
   # After your actions are done, you might want to commit and push your changes.
   #- cd repo
-  - git commit -m "Actions done."
-  - git push
+  - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
+  - git clone git://${GH_REPO}
+  - mv -f ${FILES} ${REPO}
+  - cd ${REPO}
+  - git remote
+  - git config user.email ${EMAIL}
+  - git config user.name ${USER}
+  - git add ${FILES}
+  - git commit -m ${MESSAGE}
+  - git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
+
+  #- mv -f ${FILES} ${REPO}
+  #- cd ${REPO}
+  #- git remote
+  #- git config user.email lcartwri@cisco.com
+  #- git config user.name lcartwri
+  #- git add ${FILES}
+  #- git commit -m ${MESSAGE}
+  #- git push "https://${TRAVIS_SECURE_TOKEN_NAME}@${GH_REPO}" master > /dev/null 2>&1
+  #- git commit -m "Actions done."
+  #- git push
