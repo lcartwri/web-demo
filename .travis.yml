@@ -29,20 +29,11 @@ after_success:
 
   # After your actions are done, you might want to commit and push your changes.
   #- cd repo
-  - MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
-  - git clone https://github.com/lcartwri/web-demo-code.git
-  # - cd ${GH_REPO}
-  # - mv -f ${FILES} .
+  #- MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
+  - git clone https://github.com/lcartwri/web-demo-deploy.git
+  - cd ./web-demo-deploy
   - pwd
-  - cd web-demo-code
-  - pwd
-  - ls -la
-  - mkdir /home/travis/build/${USER}/web-demo-deploy
-  - mv -f ${FILES} /home/travis/build/${USER}/web-demo-deploy
-  - ls -la home/travis/build/${USER}/web-demo-deploy
-  #- git remote
-  #- git config user.email ${EMAIL}
-  #- git config user.name ${USER}
+  - ls
   # - git add ${FILES}
   #- git commit -m ${MESSAGE}
   #- git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
