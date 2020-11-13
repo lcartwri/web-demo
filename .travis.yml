@@ -6,8 +6,11 @@ services:
 before_install:
   - docker build -t lcartwri/web-demo-app .
 
-script:
-  - docker run lcartwri/web-demo-app
+#script:
+ # - docker run lcartwri/web-demo-app
 
 after_success:
   - docker push -t lcartwri/web-demo-app
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
