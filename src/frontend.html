@@ -1,55 +1,106 @@
 <!DOCTYPE html>
+
 <html>
     <head>
-        <link rel="stylesheet" href="master.css">
-        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@800&family=Fredoka+One&display=swap" rel="stylesheet">
-    </head>
-    <head>
         <meta charset="utf-8">
-        <title>Home Page</title>
+        <title>Solution_Lab</title>
         <!-- Latest compiled and minified CSS -->
         <!-- Bootstrap CSS, JS, and jQuery -->
-        <link rel="stylesheet" href="master.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     </head>
     <body>
-        <form action="">
-            <img src="cisco-logo.png" alt="">
-            <br>
-            <h3>Do you want to enable network impairment?</h3>
-            <label for="Yes">Yes:</label>
-            <input type="radio" id="yes_buttom" name="work_for_cisco" value="yes">
-            <label for="No">No:</label>
-            <input type="radio" id="no_buttom" name="work_for_cisco" value="no">
-    
-            <p>What percentage level of loss would you like to introduce?</p>
-            <select name="loss">
-                <option value="no_loss">0</option>
-                <option value="2_percent">2</option>
-                <option value="5_percent">5</option>
-            </select>
-            <p>What milisecond level of delay would you like to introduce?</p>
-            <select name="delay">
-                <option value="no_delay">0</option>
-                <option value="10_ms">10</option>
-                <option value="50_ms">50</option>
-            </select>
-            <p>What bandwidth mbps level would you like to set?</p>
-            <select name="bandwidth">
-                <option value="5_mbps">5</option>
-                <option value="20_mbps">20</option>
-                <option value="100_mbps">100</option>
-            </select>
-            <p>Any feedback comments please?</p>
-    
-            <textarea name="name" id="comments_box" cols="30" rows="5"></textarea>
-            <br>
-            <input type="submit" name="" id="submit_box" value="Submit Feedback">
-        </form>
 
-        <script src="" async defer></script>
+        <! This is the Navbar>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="https://cisco.com">Cisco <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+
+          <div class="container">
+              <h1>Welcome to the Solutions Lab!!</h1>
+
+        </div>
+        <! This is the Solution Description>
+
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Software Defined WAN (SDWAN)
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                 This is Viptela
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Software Defined Access (SDA)
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  This is DNA Center
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Software Defined Fabric (ACI)
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  This is ACI
+                </div>
+              </div>
+            </div>
+          </div>
     </body>
 </html>
