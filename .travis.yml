@@ -12,7 +12,7 @@ env:
 
 before_install:
   - docker build -t lcartwri/web-demo-app:$SHA .
-  # Log in to the docker CLI
+  # Log in to the docker 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - sudo apt update
   - sudo apt install snapd
