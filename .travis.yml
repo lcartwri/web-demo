@@ -5,7 +5,7 @@ env:
   global:
   - USER="lcartwri"
   - EMAIL="lcartwri@cisco.com"
-  - REPO="web-demo-code"
+  - REPO="web-demo-deploy"
   - FILES="Dockerfile"
   - GH_REPO="github.com/${USER}/${REPO}.git"
   - SHA=$(git rev-parse HEAD)
@@ -20,6 +20,8 @@ before_install:
 
 after_success:
   - docker push lcartwri/web-demo-app:$SHA
+  - git clone https://github.com/$GH_REPO.git
+  - cd ./${REPO} && kustomize edit set image lcartwri/web-demo-app:$SHA
 
 #deploy:
  # provider: script
