@@ -24,7 +24,7 @@ after_success:
   - git config --global user.name "lcartwri"
   - git clone https://$GH_REPO
   - cd ./${REPO} && kustomize edit set image lcartwri/web-demo-app:$SHA
-  - git commit -am 'Publish new version' 
+  - git commit -am 'Publish new version docker image lcartwri/web-demo-app:$SHA' 
   - git push "https://${GH_TOKEN}@${GH_REPO}"
 
 #deploy:
