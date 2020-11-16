@@ -19,7 +19,7 @@ before_install:
   - sudo snap install kustomize
 
 after_success:
-  - docker push -t lcartwri/web-demo-app:$SHA
+  - docker push lcartwri/web-demo-app:$SHA
 
 #deploy:
  # provider: script
