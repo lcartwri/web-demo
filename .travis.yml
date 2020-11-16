@@ -11,15 +11,18 @@ env:
   - SHA=$(git rev-parse HEAD)
 
 before_install:
-  #- docker build -t lcartwri/web-demo-app .
+  - docker build -t lcartwri/web-demo-app:$SHA .
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - sudo apt update
   - sudo apt install snapd
   - sudo snap install kustomize
 
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    all_branches: true
+after_success:
+  - docker push -t lcartwri/web-demo-app:$SHA
+
+#deploy:
+ # provider: script
+  #script: bash ./deploy.sh
+  #on:
+   # all_branches: true
