@@ -20,6 +20,8 @@ before_install:
 
 after_success:
   - docker push lcartwri/web-demo-app:$SHA
+  - git config --global user.email "lcartwri@cisco.com"
+  - git config --global user.name "lcartwri"
   - git clone https://$GH_REPO
   - cd ./${REPO} && kustomize edit set image lcartwri/web-demo-app:$SHA
   - git commit -am 'Publish new version' 
