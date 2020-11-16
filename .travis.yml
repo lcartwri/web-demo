@@ -14,8 +14,8 @@ before_install:
   - docker build -t lcartwri/web-demo-app .
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - apt install snapd
-  - snap install kustomize
+  - sudo apt install snapd
+  - sudo snap install kustomize
 
 deploy:
   provider: script
