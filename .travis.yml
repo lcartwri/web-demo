@@ -25,7 +25,7 @@ after_success:
   - git clone https://$GH_REPO
   - cd ./${REPO} && kustomize edit set image lcartwri/web-demo-app:$SHA
   - git commit -am 'Publish new version' 
-  - - git push "https://${GH_TOKEN}@${GH_REPO}"
+  - git push "https://${GH_TOKEN}@${GH_REPO}"
 
 #deploy:
  # provider: script
