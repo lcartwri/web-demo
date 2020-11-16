@@ -11,15 +11,9 @@ env:
   - SHA=$(git rev-parse HEAD)
 
 before_install:
+  - docker build -t lcartwri/web-demo-app$SHA .
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker build -t lcartwri/web-demo-app .
 
-#script:
- # - docker run lcartwri/web-demo-app
-
-
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    all_branches: true
+after_success:
+  - docker push -t lcartwri/web-demo-app$SHA
