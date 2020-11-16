@@ -20,9 +20,10 @@ before_install:
 
 script:
  # - docker run lcartwri/web-demo-app
-- |
-  set -e
-  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+#- |
+#  set -e
+- curl -s "https://raw.githubusercontent.com/ kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+#  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 
 after_success:
   # Log in to the docker CLI
