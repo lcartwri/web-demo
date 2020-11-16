@@ -1,4 +1,6 @@
 language: generic
+services:
+  - docker
 env:
   global:
   - USER="lcartwri"
@@ -6,58 +8,17 @@ env:
   - REPO="web-demo-code"
   - FILES="Dockerfile"
   - GH_REPO="github.com/${USER}/${REPO}.git"
-jobs:
-  include:
-    - name:  "Linux Build"
-      os: linux
-      language: java
-      jdk: openjdk8
-services:
-  - docker
+  - SHA=$(git rev-parse HEAD)
 
 before_install:
   - docker build -t lcartwri/web-demo-app .
 
-script:
+#script:
  # - docker run lcartwri/web-demo-app
-#- |
-#  set -e
-- curl -s "https://raw.githubusercontent.com/ kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-#  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 
-after_success:
-  # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push them to docker hub
-  - docker push lcartwri/web-demo-app
-  # Set your identification.
-  # - git config --global user.email "lcartwri@cisco.com"
-  # - git config --global user.name "lcartwri" 
-  # Clone some repository you want into "repo" subfolder.
-  # - git clone https://lcartwri:${GH_TOKEN}@github.com/web-demo-code.git . 
-  # Now, perform your custom actions. Custom repository is cloned int "repo" subfolder of PWD.
 
-  # After your actions are done, you might want to commit and push your changes.
-  #- cd repo
-  #- MESSAGE=$(git log --format=%B -n 1 $TRAVIS_COMMIT)
-  - git clone https://github.com/lcartwri/web-demo-deploy.git
-  - cd ./web-demo-deploy
-  - pwd
-  - ls
-  - kustomize edit set image lcartwri/web-demo-app
-  - git commit -am 'Publish new version'
-  - git push
-  # - git add ${FILES}
-  #- git commit -m ${MESSAGE}
-  #- git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
-
-  #- mv -f ${FILES} ${REPO}
-  #- cd ${REPO}
-  #- git remote
-  #- git config user.email ${EMAIL}
-  #- git config user.name ${USER}
-  #- git add ${FILES}
-  #- git commit -m ${MESSAGE}
-  #- git push "https://${TRAVIS_SECURE_TOKEN_NAME}@${GH_REPO}" master > /dev/null 2>&1
-  #- git commit -m "Actions done."
-  #- git push
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
