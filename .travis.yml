@@ -22,7 +22,7 @@ after_success:
   - docker push lcartwri/web-demo-app:$SHA
   - git clone https://$GH_REPO
   - cd ./${REPO} && kustomize edit set image lcartwri/web-demo-app:$SHA
-  - git commit -am 'Publish new version' && git push || echo 'no changes
+  - git commit -am 'Publish new version' && git push
 
 #deploy:
  # provider: script
